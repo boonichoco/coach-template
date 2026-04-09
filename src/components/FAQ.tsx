@@ -24,6 +24,10 @@ const faqs = [
     a: "Non. Je suis contre les régimes stricts parce qu'ils ne durent pas. Mon approche nutrition est basée sur l'équilibre et l'adaptation à ce que tu aimes manger. Tu vas faire des choix plus intelligents, pas te priver.",
   },
   {
+    q: "Combien ça coûte ?",
+    a: "La première séance est 100% gratuite. Ensuite, les formules commencent à 149€/mois (1 séance/semaine) et vont jusqu'à 399€/mois pour un suivi complet illimité. Il n'y a pas d'engagement : tu paies mois par mois et tu arrêtes quand tu veux.",
+  },
+  {
     q: "Que se passe-t-il si je dois annuler une séance ?",
     a: "Pas de problème tant que tu préviens 24h avant. La séance est reportée sans frais. La vie, ça arrive — je m'adapte à ta réalité, pas l'inverse.",
   },

@@ -26,7 +26,7 @@ export default function CTA() {
           <div className="inline-flex items-center gap-3 bg-accent/10 border border-accent/25 text-accent px-5 py-3 rounded-full">
             <span className="w-2.5 h-2.5 bg-accent rounded-full animate-pulse shrink-0" />
             <span className="text-sm font-bold">
-              Plus que <strong>3 créneaux disponibles</strong> cette semaine à Lyon
+              ⚠️ Seulement <strong>5 places disponibles</strong> ce mois-ci à Lyon
             </span>
           </div>
         </div>
