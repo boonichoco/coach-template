@@ -9,10 +9,12 @@ export default function Hero() {
           src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1600&q=80"
           alt="Coach sportif en action"
           fill
-          className="object-cover object-center"
+          className="object-cover object-[70%_center] md:object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/30" />
+        {/* Gradient adapté mobile (bas vers haut) + desktop (gauche vers droite) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/80 to-black/40 md:bg-none" />
+        <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-black/95 via-black/80 to-black/30" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 pt-24 pb-20">

@@ -22,11 +22,19 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-black/96 backdrop-blur-sm border-b border-white/8 py-3"
-          : "bg-transparent py-5"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5"
+      style={{
+        backgroundColor:
+          scrolled
+            ? "rgba(0,0,0,0.97)"
+            : menuOpen
+            ? "rgba(0,0,0,0.97)"
+            : "transparent",
+        backdropFilter: scrolled || menuOpen ? "blur(8px)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "none",
+        paddingTop: scrolled ? "12px" : "20px",
+        paddingBottom: scrolled ? "12px" : "20px",
+      }}
     >
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
         <a href="#" className="text-xl font-black tracking-tight">
@@ -67,7 +75,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-black/98 border-t border-white/8 px-4 py-6 flex flex-col gap-4">
+        <div className="md:hidden bg-black/98 border-t border-white/8 px-4 py-6 flex flex-col gap-4 animate-fade-up">
           {links.map((l) => (
             <a
               key={l.href}
