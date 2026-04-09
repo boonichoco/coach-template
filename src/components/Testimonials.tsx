@@ -3,28 +3,34 @@ const testimonials = [
     name: "Sophie L.",
     age: 32,
     city: "Lyon 6e",
+    job: "Infirmière",
     avatar: "SL",
     rating: 5,
-    result: "-12 kg en 4 mois",
-    text: "Je n'y croyais plus après avoir essayé plein de méthodes. Alex a tout changé. Son approche est bienveillante mais exigeante — exactement ce dont j'avais besoin. J'ai perdu 12 kg et je n'ai jamais me senti aussi bien dans ma peau.",
+    result: "−12 kg en 4 mois",
+    headline: "J'avais honte de me voir en photo. Plus maintenant.",
+    text: "J'avais essayé Weight Watchers, des apps, des challenges en ligne… rien ne tenait. Avec Alex, la différence c'est qu'il comprend ta vie réelle — tes horaires, ton stress, tes envies. En 4 mois j'ai perdu 12 kg et je suis redescendue à ma taille d'avant grossesse. Mais surtout, je ne me cache plus.",
   },
   {
     name: "Thomas R.",
     age: 38,
     city: "Lyon 3e",
+    job: "Directeur commercial",
     avatar: "TR",
     rating: 5,
     result: "+8 kg de muscle",
-    text: "En tant que cadre avec un emploi du temps chargé, j'avais besoin d'un programme efficace et flexible. Alex s'est adapté à mes contraintes. Résultat : j'ai pris 8 kg de muscle en 6 mois et mon énergie au bureau a explosé.",
+    headline: "En 6 mois j'ai plus changé qu'en 5 ans de salle seul.",
+    text: "Je faisais de la salle depuis des années sans vraiment progresser. Alex a tout restructuré — mon entraînement, mon alimentation et ma récupération. En 6 mois j'ai pris 8 kg de muscle, mes collègues m'ont demandé si j'avais pris un stéroïde. La réponse c'est juste : une méthode qui marche.",
   },
   {
     name: "Camille D.",
     age: 27,
     city: "Villeurbanne",
+    job: "Graphiste",
     avatar: "CD",
     rating: 5,
-    result: "Objectif marathon atteint",
-    text: "Je voulais courir mon premier marathon. Alex m'a construit un plan sur mesure, m'a aidée à améliorer mon alimentation et ne m'a jamais laissée douter. J'ai franchi la ligne d'arrivée en 4h12. Une fierté immense.",
+    result: "Marathon en 4h12",
+    headline: "Il m'a fait croire en moi quand je n'y croyais plus.",
+    text: "Mon objectif semblait fou : courir un marathon sans jamais avoir fait plus de 10 km. Alex m'a construit un plan sur 5 mois, semaine par semaine. Il a géré mon alimentation, mes douleurs, mes doutes. Le jour J j'ai pleuré en franchissant la ligne. Ce n'est pas juste du sport, c'est une transformation de qui tu es.",
   },
 ];
 
@@ -42,20 +48,21 @@ function Stars({ count }: { count: number }) {
 
 export default function Testimonials() {
   return (
-    <section id="temoignages" className="py-24 bg-zinc-950">
+    <section id="temoignages" className="py-24 bg-black">
       <div className="max-w-6xl mx-auto px-4">
+
         {/* Header */}
         <div className="text-center mb-16">
           <span className="text-accent text-sm font-semibold tracking-widest uppercase">
             Témoignages
           </span>
           <h2 className="text-4xl md:text-5xl font-black mt-3 mb-4">
-            Ils ont osé changer.
+            Ils ont fait le premier pas.
             <br />
-            <span className="text-accent">Résultats réels.</span>
+            <span className="text-accent">Leur vie a changé.</span>
           </h2>
-          <p className="text-white/50 max-w-lg mx-auto">
-            Plus de 150 clients accompagnés. Voici ce qu'ils en disent.
+          <p className="text-white/50 max-w-md mx-auto">
+            150+ clients accompagnés à Lyon. Voici leurs mots — pas les miens.
           </p>
         </div>
 
@@ -64,49 +71,58 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="bg-zinc-900 border border-white/5 rounded-2xl p-8 flex flex-col gap-5 hover:border-white/10 transition-all duration-300 hover:-translate-y-1"
+              className="group bg-zinc-900 border border-white/5 rounded-2xl p-7 flex flex-col gap-4 hover:border-accent/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/5"
             >
-              {/* Stars + result */}
+              {/* Stars + result badge */}
               <div className="flex items-center justify-between">
                 <Stars count={t.rating} />
-                <span className="bg-accent/15 text-accent text-xs font-bold px-3 py-1 rounded-full">
+                <span className="bg-accent/15 text-accent text-xs font-black px-3 py-1 rounded-full border border-accent/20">
                   {t.result}
                 </span>
               </div>
 
+              {/* Headline */}
+              <p className="text-white font-bold text-base leading-snug">
+                &ldquo;{t.headline}&rdquo;
+              </p>
+
               {/* Quote */}
-              <p className="text-white/70 text-sm leading-relaxed flex-1 italic">
-                &ldquo;{t.text}&rdquo;
+              <p className="text-white/55 text-sm leading-relaxed flex-1">
+                {t.text}
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-                <div className="w-10 h-10 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center text-accent text-xs font-bold shrink-0">
+              <div className="flex items-center gap-3 pt-4 border-t border-white/8">
+                <div className="w-10 h-10 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center text-accent text-xs font-black shrink-0">
                   {t.avatar}
                 </div>
                 <div>
-                  <div className="font-semibold text-sm">{t.name}</div>
-                  <div className="text-white/40 text-xs">
-                    {t.age} ans · {t.city}
-                  </div>
+                  <div className="font-semibold text-sm text-white">{t.name}</div>
+                  <div className="text-white/35 text-xs">{t.job} · {t.age} ans · {t.city}</div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Trust bar */}
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-white/40">
-          <div className="flex items-center gap-2">
-            <svg className="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            Témoignages vérifiés
+        {/* Trust + CTA */}
+        <div className="mt-12 flex flex-col items-center gap-5">
+          <div className="flex flex-col sm:flex-row items-center gap-4 text-sm text-white/35">
+            <span className="flex items-center gap-1.5">
+              <svg className="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+              Témoignages réels
+            </span>
+            <span className="hidden sm:block">·</span>
+            <span>Note moyenne <strong className="text-accent">4.9/5</strong></span>
+            <span className="hidden sm:block">·</span>
+            <span>150+ clients accompagnés</span>
           </div>
-          <span className="hidden sm:block">·</span>
-          <span>Note moyenne : <strong className="text-accent">4.9/5</strong> sur 150+ avis</span>
-          <span className="hidden sm:block">·</span>
-          <span>Résultats visibles en <strong className="text-white/70">90 jours</strong></span>
+          <a
+            href="#reserver"
+            className="bg-accent hover:bg-accent-dark text-white font-black px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-accent/30"
+          >
+            Je veux le même résultat — séance gratuite →
+          </a>
         </div>
       </div>
     </section>

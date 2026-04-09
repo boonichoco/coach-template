@@ -8,7 +8,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -17,38 +17,39 @@ export default function Navbar() {
     { label: "Offres", href: "#offres" },
     { label: "Témoignages", href: "#temoignages" },
     { label: "À propos", href: "#apropos" },
+    { label: "FAQ", href: "#faq" },
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-black/95 backdrop-blur-sm border-b border-white/10 py-3"
+          ? "bg-black/96 backdrop-blur-sm border-b border-white/8 py-3"
           : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold tracking-tight">
+        <a href="#" className="text-xl font-black tracking-tight">
           <span className="text-white">Alex</span>
           <span className="text-accent"> Martin</span>
         </a>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Desktop */}
+        <nav className="hidden md:flex items-center gap-7">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-white/70 hover:text-white transition-colors duration-200"
+              className="text-sm text-white/60 hover:text-white transition-colors duration-200"
             >
               {l.label}
             </a>
           ))}
           <a
             href="#reserver"
-            className="bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:scale-105"
+            className="bg-accent hover:bg-accent-dark text-white text-sm font-black px-5 py-2.5 rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-accent/25"
           >
-            Réserver une séance
+            Séance gratuite →
           </a>
         </nav>
 
@@ -58,33 +59,21 @@ export default function Navbar() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menu"
         >
-          <span
-            className={`block h-0.5 w-6 bg-white transition-all duration-200 ${
-              menuOpen ? "rotate-45 translate-y-2" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-white transition-all duration-200 ${
-              menuOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-white transition-all duration-200 ${
-              menuOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
-          />
+          <span className={`block h-0.5 w-6 bg-white transition-all duration-200 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`block h-0.5 w-6 bg-white transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`block h-0.5 w-6 bg-white transition-all duration-200 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
       </div>
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-black/98 border-t border-white/10 px-4 py-6 flex flex-col gap-4">
+        <div className="md:hidden bg-black/98 border-t border-white/8 px-4 py-6 flex flex-col gap-4">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setMenuOpen(false)}
-              className="text-white/80 hover:text-white transition-colors py-1"
+              className="text-white/70 hover:text-white transition-colors py-1"
             >
               {l.label}
             </a>
@@ -92,9 +81,9 @@ export default function Navbar() {
           <a
             href="#reserver"
             onClick={() => setMenuOpen(false)}
-            className="bg-accent hover:bg-accent-dark text-white font-semibold px-5 py-3 rounded-full text-center transition-all duration-200"
+            className="bg-accent hover:bg-accent-dark text-white font-black px-5 py-3.5 rounded-full text-center transition-all duration-200"
           >
-            Réserver une séance
+            Réserver ma séance gratuite →
           </a>
         </div>
       )}
